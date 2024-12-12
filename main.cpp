@@ -10,10 +10,9 @@ int cellCount = 25;
 int offset = 75;
 
 double LastUpdateTime = 0;
-Color grey = {147,118,127,255};
-Color green = {173,204,96,255};
-Color darkGreen = {43,51,24,255};
+
 Color ColorArray[] = {RED,ORANGE,YELLOW,GREEN,BLUE,DARKBLUE,PURPLE};
+
 bool ElementInDeque(Vector2 element, deque<Vector2> dq){
     for(unsigned int i=0;i<dq.size();i++){
         if(Vector2Equals(element,dq[i]))
@@ -185,7 +184,7 @@ int main(void)
             game.Update();
         }
 
-        // change snake direction when key pressed
+        // change snake direction and head rotation angle when key pressed
         if(IsKeyPressed(KEY_UP) and game.snake.direction.y != 1){
             game.snake.direction = {0,-1};
             game.Running = true;
@@ -209,9 +208,7 @@ int main(void)
             game.Running = true;
             game.snake.rotationAngle = 90.0f;
         }
-        
         // drawing
-        
         ClearBackground(DARKGRAY);
         // border
         DrawRectangleLinesEx(Rectangle{(float)offset-5,(float)offset-5,(float)cellSize*cellCount+10,(float)cellSize*cellCount+10},5,YELLOW);
